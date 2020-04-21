@@ -1,0 +1,13 @@
+name: crystal_mind
+version: 0.1.0
+
+authors:
+  - Lukasz Skotarek <l.skotarek@blockfi.com>
+
+targets:
+  crystal_mind:
+    main: src/crystal_mind.cr
+
+crystal: 0.34.0
+
+license: MIT
