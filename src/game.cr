@@ -26,6 +26,18 @@ class Game
             .size
     end
 
+    def misses(move)
+        (answer.to_a - move.to_a).size
+    end
+
+    def white_count(move)
+        total_possible_pegs - red_count(move) - misses(move)
+    end
+
+    def total_possible_pegs
+        answer.size
+    end
+
     def self.generate_random_answer()
         r = Random.new
 

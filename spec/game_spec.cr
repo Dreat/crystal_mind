@@ -35,4 +35,17 @@ describe Game do
             .move({1, 2, 3, 3})
             .moves.last.should eq({1, 2, 3, 3})
     end
+
+    it "should count red pegs" do
+        Game.new({1, 2, 3, 4}).red_count({1, 2, 3, 4}).should eq(4)
+        Game.new({1, 2, 3, 4}).red_count({1, 2, 4, 5}).should eq(2)
+        Game.new({1, 1, 1, 2}).red_count({1, 1, 1, 1}).should eq(3)
+    end
+
+    it "should count white pegs" do
+        Game.new({1, 2, 3, 4}).white_count({1, 2, 3, 4}).should eq(0)
+        Game.new({1, 2, 3, 4}).white_count({1, 2, 4, 5}).should eq(1)
+        Game.new({1, 1, 1, 2}).white_count({2, 2, 2, 1 }).should eq(4)
+    end
 end
+
