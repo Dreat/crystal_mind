@@ -47,5 +47,32 @@ describe Game do
         Game.new({1, 2, 3, 4}).white_count({1, 2, 4, 5}).should eq(1)
         Game.new({1, 1, 1, 2}).white_count({2, 2, 2, 1 }).should eq(4)
     end
+
+    it "should count winners and losers" do
+        game = Game.new({1, 1, 1, 2}).move({1, 2, 3, 2})
+
+        game.won?.should_not be_true
+        Game.new.won?.should_not be_true
+        Game.new.lost?.should_not be_true
+
+        won_game = Game.new({1, 1, 1, 1}).move({1, 1, 1, 1})
+        won_game.won?.should be_true
+        won_game.lost?.should_not be_true
+
+        lost_game = Game.new({1, 1, 1, 1})
+            .move({2, 2, 2, 2})
+            .move({2, 2, 2, 2})
+            .move({2, 2, 2, 2})
+            .move({2, 2, 2, 2})
+            .move({2, 2, 2, 2})
+            .move({2, 2, 2, 2})
+            .move({2, 2, 2, 2})
+            .move({2, 2, 2, 2})
+            .move({2, 2, 2, 2})
+            .move({2, 2, 2, 2})
+
+        lost_game.lost?.should be_true
+        lost_game.won?.should_not be_true
+    end
 end
 
