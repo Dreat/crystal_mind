@@ -19,6 +19,13 @@ class Game
         self
     end
 
+    def red_count(move)
+        answer
+            .zip(move)
+            .select { |x, y| x == y}
+            .size
+    end
+
     def self.generate_random_answer()
         r = Random.new
 
