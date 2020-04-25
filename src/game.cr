@@ -79,6 +79,10 @@ class Game
         !won? && moves.size == 10
     end
 
+    def finished?
+        won? || lost?
+    end
+
     def self.generate_random_answer()
         r = Random.new
 
